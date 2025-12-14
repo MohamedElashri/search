@@ -1,13 +1,13 @@
 @font-face {
 	font-family: "Work Sans";
-	src: url("/fonts/WorkSans.woff2");
+	src: url("fonts/WorkSans.woff2");
 	font-weight: 100 900;
 	font-display: fallback;
 }
 
 @font-face {
 	font-family: "Fira Code";
-	src: url("/fonts/FiraCode.woff2");
+	src: url("fonts/FiraCode.woff2");
 	font-weight: 300 700;
 	font-display: fallback;
 	size-adjust: 90%;
