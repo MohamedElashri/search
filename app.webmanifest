@@ -1,0 +1,19 @@
+{
+	"name": "ME Search",
+	"short_name": "ME Search",
+	"description": "Lightweight search engine router that enables quickly jumping between search engines and other quality of life features.",
+	"start_url": "/",
+	"display": "standalone",
+	"id": "me-search-router",
+	"icons": [
+		{
+			"src": "/favicon.svg",
+			"sizes": "any"
+		}
+	],
+	"background_color": "#131111",
+	"categories": [
+		"productivity",
+		"utilities"
+	]
+}

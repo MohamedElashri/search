@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+
+<head profile="http://a9.com/-/spec/opensearch/1.1/">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>ME Search</title>
+
+	<script src="script.js"></script>
+
+	<link rel="stylesheet" href="/styles.css">
+	<link rel="preload" href="/fonts/WorkSans.woff2" as="font" type="font/woff2" crossorigin>
+	<link rel="preload" href="/fonts/FiraCode.woff2" as="font" type="font/woff2" crossorigin>
+
+	<meta property="og:title" content="ME Search">
+	<meta name="description"
+		content="Fast, lightweight search engine router with !bang shortcuts and @snap site filters. Switch between search engines instantly and search specific websites with ease.">
+	<meta property="og:description"
+		content="Lightweight search engine router that enables quickly jumping between search engines and other quality of life features.">
+	<meta property="og:type" content="website">
+
+	<link rel="icon" type="image/svg+xml" href="https://melashri.net/search/favicon.svg">
+
+	<meta property="og:image" content="/og_image.png">
+	<meta property="og:image:alt" content="A magnifying glass next to the text ME Search.">
+
+	<link rel="canonical" href="https://melashri.net/search">
+	<meta property="og:url" content="https://melashri.net/search">
+
+	<meta property="og:site_name" content="ME Search">
+	<meta property="og:locale" content="en_AU">
+
+	<meta name="author" content="Mohamed Elashri">
+	<meta name="contact" content="https://melashri.net/search">
+
+	<meta name="color-scheme" content="light dark">
+	<meta name="theme-color" content="oklch(94.75% 0.04 73)" media="(prefers-color-scheme: light)">
+	<meta name="theme-color" content="oklch(18% 0.003 17.5)" media="(prefers-color-scheme: dark)">
+
+	<link rel="search" type="application/opensearchdescription+xml" title="ME Search"
+		href="https://melashri.net/search/opensearch.xml">
+	<link rel="manifest" href="/app.webmanifest">
+</head>
+
+<body>
+	<button id="theme-toggle" class="theme-toggle" aria-label="Toggle light/dark mode">
+		<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+			<path
+				d="M12 2.25a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V3a.75.75 0 01.75-.75zM7.5 12a4.5 4.5 0 119 9 4.5 4.5 0 01-9-9zM18.894 6.166a.75.75 0 00-1.06-1.06l-1.591 1.59a.75.75 0 101.06 1.061l1.591-1.59zM21.75 12a.75.75 0 01-.75.75h-2.25a.75.75 0 010-1.5H21a.75.75 0 01.75.75zM17.834 18.894a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 10-1.061 1.06l1.59 1.591zM12 18a.75.75 0 01.75.75V21a.75.75 0 01-1.5 0v-2.25A.75.75 0 0112 18zM7.758 17.303a.75.75 0 00-1.061-1.06l-1.591 1.59a.75.75 0 001.06 1.061l1.591-1.59zM6 12a.75.75 0 01-.75.75H3a.75.75 0 010-1.5h2.25A.75.75 0 016 12zM6.697 7.757a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 00-1.061 1.06l1.59 1.591z" />
+		</svg>
+	</button>
+	<main>
+		<h1>Search Router</h1>
+		<noscript>
+			<p>This app requires JavaScript to function, but it isn't enabled in your browser.</p>
+		</noscript>
+
+		<div id="script-enabled">
+			<form id="search-form">
+				<input type="text" id="search-input" placeholder="Search...">
+				<button type="submit" id="search-button">
+					<svg viewBox="0 -960 960 960">
+						<title>Search</title>
+						<path
+							d="M774-118 533-359q-30 21-70.29 33-40.29 12-81.68 12Q271-314 194-391t-77-187q0-110 77-187t187-77q110 0 187 77t77 187.03q0 41.39-11 79.18Q623-461 601-429l242 242-69 69ZM381-412q70 0 118-48t48-118q0-70-48-118t-118-48q-70 0-118 48t-48 118q0 70 48 118t118 48Z" />
+					</svg>
+				</button>
+			</form>
+
+			<div class="default-engine">
+				<label for="engine-select">Default Search Engine:</label>
+				<select id="engine-select">
+					<option value="https://kagi.com/search?q=" selected>Kagi</option>
+					<option value="https://start.duckduckgo.com/?q=">DuckDuckGo</option>
+					<option value="https://html.duckduckgo.com/html?q=">DuckDuckGo (HTML)</option>
+					<option value="https://lite.duckduckgo.com/lite?q=">DuckDuckGo (Lite)</option>
+					<option value="https://www.google.com/search?q=">Google</option>
+					<option value="https://search.brave.com/search?q=">Brave</option>
+					<option value="https://yandex.com/search/?text=">Yandex</option>
+					<option value="https://www.ecosia.org/search?q=">Ecosia</option>
+					<option value="https://www.mojeek.com/search?q=">Mojeek</option>
+					<option value="https://www.perplexity.ai/search?q=">Perplexity</option>
+					<option value="https://www.alexandria.org/?q=">Alexandria Search</option>
+					<option value="https://chatgpt.com/?hints=search&q=">ChatGPT Search</option>
+					<option value="https://www.qwant.com/?q=">Qwant</option>
+				</select>
+			</div>
+
+			<button class="shortcode-open" popovertarget="shortcode-popover">Shortcodes</button>
+
+			<div id="shortcode-popover" popover>
+				<h2>Shortcodes</h2>
+				<p>Bang Patterns - You can add a shortcode prefixed with '!' to the start or end of your query to
+					quickly switch to a specific search engine or website.</p>
+				<br>
+				<p>Snap Patterns - You can add a shortcode prefixed with '@' to the start or end of your query to do a
+					search in your default engine that is filtered to a specific site.</p>
+				<br>
+				<p>The available shortcodes are:</p>
+				<ul id="shortcode-list"></ul>
+				<button class="shortcode-close" popovertarget="shortcode-popover">
+					<svg viewBox="0 -960 960 960">
+						<title>Close shortcode panel</title>
+						<path
+							d="m287-216-69-71 192-193-192-195 69-71 194 195 192-195 69 71-192 195 192 193-69 71-192-195-194 195Z" />
+					</svg>
+				</button>
+			</div>
+		</div>
+	</main>
+
+	<footer><a href="https://github.com/MohamedElashri/search">Source Code</a> | Built by <a
+			href="https://melashri.net">Mohamed Elashri</a></footer>
+</body>
+
+</html>
