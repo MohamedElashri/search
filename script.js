@@ -277,13 +277,6 @@ document.addEventListener("DOMContentLoaded", function () {
 		});
 
 
-		// Prevent popover dismissal on interaction
-		["mousedown", "touchstart", "pointerdown", "click"].forEach((eventType) => {
-			themeToggleBtn.addEventListener(eventType, (e) => {
-				e.stopPropagation();
-			});
-		});
-
 		themeToggleBtn.addEventListener("click", () => {
 			const currentTheme = document.documentElement.className;
 			const newTheme = currentTheme === "dark" ? "light" : "dark";
