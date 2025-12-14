@@ -169,6 +169,8 @@ a {
 	margin-inline: auto;
 }
 
+
+
 #engine-select {
 	display: block;
 }
@@ -178,7 +180,7 @@ a {
 	margin-inline: auto;
 }
 
-#shortcode-popover {
+.popover-box {
 	background: light-dark(var(--white-alpha), var(--grey-alpha));
 	backdrop-filter: blur(20px);
 	-webkit-backdrop-filter: blur(20px);
@@ -211,11 +213,13 @@ a {
 		box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
 	}
 
-	.shortcode-close {
+	.popover-close {
 		position: fixed;
-		inset-block-start: 2.6rem;
+		inset-block-start: 1rem;
 		inset-inline-end: 0.5rem;
 		padding: 0.5rem;
+		background: transparent;
+		border: none;
 	}
 
 	svg {
@@ -223,11 +227,9 @@ a {
 	}
 
 	@media (min-width: 45rem) {
-		margin-block: 3rem;
-
-		.shortcode-close {
-			inset-block-start: 3rem;
-			inset-inline-end: 3rem;
+		.popover-close {
+			inset-block-start: 1rem;
+			inset-inline-end: 1rem;
 		}
 	}
 }
@@ -276,10 +278,16 @@ footer {
 	margin-top: auto;
 }
 
-.theme-toggle {
+.header-controls {
 	position: absolute;
 	top: 1rem;
 	right: 1rem;
+	display: flex;
+	gap: 0.5rem;
+}
+
+.theme-toggle,
+.about-btn {
 	background: none;
 	border: none;
 	cursor: pointer;
@@ -290,7 +298,8 @@ footer {
 	justify-content: center;
 }
 
-.theme-toggle svg {
+.theme-toggle svg,
+.about-btn svg {
 	width: 1.5rem;
 	height: 1.5rem;
 	fill: light-dark(var(--black), var(--bright_white));
