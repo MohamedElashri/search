@@ -96,6 +96,17 @@ h1 {
 	line-height: 2.2rem;
 }
 
+.home-link {
+	text-decoration: none;
+	-webkit-text-decoration: none;
+	color: inherit;
+}
+
+.home-link:hover,
+.home-link:active {
+	text-decoration: none;
+}
+
 h2 {
 	font-size: 1.5rem;
 	line-height: 1.8rem;
