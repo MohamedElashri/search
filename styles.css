@@ -16,28 +16,37 @@
 :root {
 	color-scheme: light dark;
 
-	--black: oklch(18% 0.02 260);
-	/* Deep cool blue-grey */
-	--white: oklch(88% 0.02 260);
-	/* Soft cool white */
-	--white-alpha: oklch(88% 0.02 260 / 0.8);
-	/* Soft cool white with alpha */
-	--grey: oklch(30% 0.02 260);
-	/* Darker cool grey for elements */
-	--grey-alpha: oklch(30% 0.02 260 / 0.8);
-	/* Darker cool grey with alpha */
-	--bright_white: oklch(98% 0.01 260);
-	/* Almost white */
-	--blue: oklch(62% 0.16 260);
-	/* Vibrant blue */
-	--cyan: oklch(75% 0.14 220);
-	/* Cyan accent */
-	--yellow: oklch(85% 0.15 85);
-	/* Yellow accent */
-	--green: oklch(70% 0.16 150);
-	/* Green accent */
-	--border-color: oklch(85% 0.01 260);
-	/* Light mode border */
+	/* --- Palette: Modern Soft --- */
+
+	/* Colors */
+	--primary: oklch(55% 0.2 260);
+	/* Vivid Blue */
+	--primary-hover: oklch(45% 0.2 260);
+
+	/* Light Mode Colors */
+	--bg-light: oklch(98% 0.005 240);
+	/* Warmish White */
+	--surface-light: oklch(100% 0 0);
+	/* Pure White */
+	--text-light: oklch(25% 0.02 260);
+	/* Deep Slate */
+	--border-light: oklch(90% 0.01 260);
+
+	/* Dark Mode Colors */
+	--bg-dark: oklch(15% 0.03 260);
+	/* Deep Navy Grey */
+	--surface-dark: oklch(20% 0.03 260);
+	/* Slightly Lighter Navy */
+	--surface-dark-alpha: oklch(20% 0.03 260 / 0.8);
+	--text-dark: oklch(92% 0.01 240);
+	/* Soft Grey-White */
+	--border-dark: oklch(30% 0.02 260);
+
+	/* Elements */
+	--radius-sm: 8px;
+	--radius-lg: 16px;
+	--shadow-sm: 0 2px 8px -2px oklch(0% 0 0 / 0.1);
+	--shadow-lg: 0 10px 30px -5px oklch(0% 0 0 / 0.15);
 }
 
 :root.light {
@@ -72,12 +81,16 @@ body {
 	text-align: center;
 	display: flex;
 	flex-direction: column;
-	color: light-dark(var(--black), var(--bright_white));
-	background: light-dark(var(--bright_white), var(--black));
-	font:
-		430 1rem/1.5 "Work Sans",
-		sans-serif;
+
+	/* Theme Mapping */
+	color: light-dark(var(--text-light), var(--text-dark));
+	background: light-dark(var(--bg-light), var(--bg-dark));
+
+	font-family: "Work Sans", sans-serif;
+	font-size: 1rem;
+	line-height: 1.6;
 	padding: 1rem;
+	transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 main {
@@ -86,14 +99,21 @@ main {
 
 h1,
 h2 {
-	text-transform: uppercase;
-	font-weight: 700;
+	font-weight: 600;
+	/* Lighter weight for elegance */
+	letter-spacing: -0.02em;
 	margin-block-end: 1rem;
 }
 
 h1 {
-	font-size: 2rem;
-	line-height: 2.2rem;
+	font-size: 2.5rem;
+	font-weight: 800;
+	letter-spacing: -0.03em;
+	background: linear-gradient(135deg, var(--primary), oklch(65% 0.18 200));
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	background-clip: text;
+	display: inline-block;
 }
 
 .home-link {
@@ -109,34 +129,30 @@ h1 {
 
 h2 {
 	font-size: 1.5rem;
-	line-height: 1.8rem;
+	opacity: 0.9;
 }
 
 @media (min-width: 45rem) {
 	h1 {
-		font-size: 2.8rem;
-		line-height: 3rem;
+		font-size: 3.5rem;
 	}
 
 	h2 {
 		font-size: 1.8rem;
-		line-height: 2rem;
 	}
 }
 
 a {
-	color: inherit;
-	text-decoration: underline 0.08rem light-dark(var(--cyan), var(--blue));
-	-webkit-text-decoration-line: underline;
-	-webkit-text-decoration-color: light-dark(var(--cyan), var(--blue));
-	text-decoration-skip-ink: none;
-	text-underline-offset: 0.25rem;
+	color: var(--primary);
+	text-decoration: none;
+	font-weight: 500;
+	transition: color 0.2s ease;
+}
 
-	&:hover,
-	&:active {
-		text-decoration-thickness: 0.6rem;
-		text-underline-offset: -0.29rem;
-	}
+a:hover {
+	color: var(--primary-hover);
+	text-decoration: underline;
+	text-underline-offset: 4px;
 }
 
 #script-enabled {
@@ -150,54 +166,63 @@ a {
 
 #search-form {
 	display: flex;
-
-	input {
-		inline-size: 100%;
-	}
-
-	svg {
-		block-size: 1.3rem;
-		margin-block: auto;
-	}
-
-	&:focus-within {
-		outline: var(--blue) solid 2px;
-	}
+	gap: 0.5rem;
+	position: relative;
 }
+
+#search-form input {
+	inline-size: 100%;
+	flex-grow: 1;
+}
+
+#search-form button {
+	aspect-ratio: 1;
+	display: grid;
+	place-content: center;
+}
+
+#search-form svg {
+	block-size: 1.3rem;
+	fill: currentColor;
+}
+
 
 .default-engine {
 	margin-inline: auto;
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+	align-items: center;
 }
-
-
 
 #engine-select {
 	display: block;
+	cursor: pointer;
 }
 
 .shortcode-open {
 	block-size: fit-content;
 	margin-inline: auto;
+	cursor: pointer;
+	padding-inline: 1.5rem;
 }
 
 .popover-box {
-	background: light-dark(var(--white-alpha), var(--grey-alpha));
+	background: light-dark(rgba(255, 255, 255, 0.95), var(--surface-dark-alpha));
 	backdrop-filter: blur(20px);
 	-webkit-backdrop-filter: blur(20px);
 	text-align: left;
-	/* Scroll Fix: Remove fixed block-size-100% which forces full height */
-	/* block-size: 100%; */
+
+	/* Scroll Fix */
 	padding-block-start: 2rem;
-	padding-block-end: 10rem;
-	/* Extra space for scroll */
-	padding-inline: 1rem;
+	padding-block-end: 12rem;
+	padding-inline: 1.5rem;
 	max-inline-size: 100%;
 
 	/* Mobile/Base Styles */
 	inset: 0;
 	width: 100%;
 	height: 100dvh;
-	/* Full screen on mobile */
 	max-inline-size: 100%;
 	max-height: 100dvh;
 	margin: 0;
@@ -209,14 +234,23 @@ a {
 	overscroll-behavior: contain;
 
 	box-shadow: none;
+	color: light-dark(var(--text-light), var(--text-dark));
 
 	.popover-close {
 		position: fixed;
 		inset-block-start: 1rem;
-		inset-inline-end: 0.5rem;
+		inset-inline-end: 1rem;
 		padding: 0.5rem;
 		background: transparent;
-		border: none;
+		border: 1px solid transparent;
+		/* Fix layout shift */
+		opacity: 0.7;
+		transition: opacity 0.2s, background 0.2s;
+	}
+
+	.popover-close:hover {
+		opacity: 1;
+		background: light-dark(rgba(0, 0, 0, 0.05), rgba(255, 255, 255, 0.1));
 	}
 
 	svg {
@@ -227,134 +261,156 @@ a {
 		text-decoration: none;
 		-webkit-text-decoration: none;
 		border: none;
+		color: var(--primary);
 	}
 
 	.example-link:hover {
 		background: transparent;
-		text-decoration: none;
+		text-decoration: underline;
 	}
 
 	@media (min-width: 45rem) {
 		inset: auto;
 		width: auto;
 		height: auto;
-		/* Allow auto height on desktop */
 		max-inline-size: 40rem;
 		max-height: 80vh;
-		/* Limit height to trigger scroll if needed */
 		margin: 3rem auto;
-		border: 1px solid light-dark(var(--border-color), transparent);
-		border-radius: 8px;
-		box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-	}
+		border: 1px solid light-dark(var(--border-light), var(--border-dark));
+		border-radius: var(--radius-lg);
+		box-shadow: var(--shadow-lg);
 
-	.popover-close {
-		position: fixed;
-		inset-block-start: 1rem;
-		inset-inline-end: 0.5rem;
-		padding: 0.5rem;
-		background: transparent;
-		border: none;
-	}
-
-	svg {
-		block-size: 1.5rem;
-	}
-
-	@media (min-width: 45rem) {
-		.popover-close {
-			inset-block-start: 1rem;
-			inset-inline-end: 1rem;
-		}
+		/* Remove fixed close button relative positioning for desktop if acceptable, 
+		   but sticking with fixed inside scroll container can be tricky. 
+		   Let's keep it fixed relative to viewport for now or sticky? 
+		   Actually, sticking with fixed is fine if it works on mobile. */
 	}
 }
 
 ul {
-	list-style-type: "✦ ";
-	padding-inline-start: 2rem;
+	list-style-type: none;
+	/* Custom bullets */
+	padding-inline-start: 1rem;
+}
+
+ul li {
+	margin-block-end: 0.5rem;
+	position: relative;
+	padding-inline-start: 1rem;
+}
+
+ul li::before {
+	content: "•";
+	color: var(--primary);
+	position: absolute;
+	left: 0;
+	font-weight: bold;
 }
 
 code {
 	font-family: "Fira Code", monospace;
 	font-size: 0.9em;
-	padding: 0.2rem 0.4rem;
-	border-radius: 4px;
-	background: light-dark(oklch(96% 0.01 260), oklch(25% 0.02 260));
-	color: light-dark(var(--blue), var(--cyan));
-	border: 1px solid light-dark(var(--border-color), transparent);
+	padding: 0.2rem 0.5rem;
+	border-radius: 6px;
+	background: light-dark(oklch(96% 0.01 240), oklch(25% 0.03 260));
+	color: var(--primary);
+	border: 1px solid light-dark(var(--border-light), var(--border-dark));
 }
 
 button,
 select,
 input {
-	color: light-dark(var(--black), var(--bright_white));
-	padding-block: 0.3rem;
-	padding-inline: 0.5rem;
-	background: light-dark(var(--white), var(--grey));
-	border: 1px solid light-dark(var(--border-color), transparent);
-	border-radius: 0;
+	color: light-dark(var(--text-light), var(--text-dark));
+	padding-block: 0.6rem;
+	padding-inline: 1rem;
+	background: light-dark(var(--surface-light), var(--surface-dark));
+	border: 1px solid light-dark(var(--border-light), var(--border-dark));
+	border-radius: var(--radius-sm);
 	font-family: inherit;
-	font-weight: initial;
+	font-weight: 500;
 	font-size: 1rem;
-	min-height: 44px;
-	/* Touch friendly */
+	min-height: 48px;
+	/* Touch friendly + aesthetic */
+	box-shadow: var(--shadow-sm);
+	transition: all 0.2s ease;
 }
 
 input {
-	padding-block: 0.5rem;
+	padding-block: 0.6rem;
+}
+
+button:hover,
+select:hover,
+input:hover {
+	border-color: var(--primary);
+}
+
+button:active,
+select:active {
+	transform: translateY(1px);
+	box-shadow: none;
+}
+
+::placeholder {
+	opacity: 0.6;
+	color: inherit;
+}
+
+:focus {
+	outline: none;
+	border-color: var(--primary);
+	box-shadow: 0 0 0 3px light-dark(oklch(55% 0.2 260 / 0.2), oklch(55% 0.2 260 / 0.3));
 }
 
 label {
-	font-size: small;
-}
-
-button {
-	display: grid;
+	font-size: 0.9rem;
+	font-weight: 500;
+	opacity: 0.8;
 }
 
 svg {
-	fill: light-dark(var(--black), var(--bright_white));
+	fill: currentColor;
 }
 
 footer {
 	font:
-		0.75rem "Fira Code",
-		monospace;
+		0.85rem "Work Sans",
+		sans-serif;
 	margin-top: auto;
+	opacity: 0.7;
+	padding-block: 2rem;
 }
 
 .header-controls {
 	position: absolute;
-	top: 1rem;
-	right: 1rem;
+	top: 1.5rem;
+	right: 1.5rem;
 	display: flex;
-	gap: 0.5rem;
+	gap: 0.8rem;
 }
 
 .theme-toggle,
 .about-btn {
-	background: none;
-	border: none;
+	background: transparent;
+	border: 1px solid transparent;
+	box-shadow: none;
 	cursor: pointer;
-	padding: 0.5rem;
+	padding: 0.6rem;
 	border-radius: 50%;
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	color: light-dark(var(--text-light), var(--text-dark));
+	transition: background 0.2s;
+}
+
+.theme-toggle:hover,
+.about-btn:hover {
+	background: light-dark(rgba(0, 0, 0, 0.05), rgba(255, 255, 255, 0.1));
 }
 
 .theme-toggle svg,
 .about-btn svg {
 	width: 1.5rem;
 	height: 1.5rem;
-	fill: light-dark(var(--black), var(--bright_white));
-}
-
-
-::placeholder {
-	opacity: 1;
-}
-
-:focus {
-	outline: var(--blue) solid 2px;
 }
