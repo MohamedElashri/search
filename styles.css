@@ -176,20 +176,28 @@ a {
 	padding-block: 2rem;
 	padding-inline: 1rem;
 	max-inline-size: 100%;
-	margin: 0 auto;
-	border: 1px solid light-dark(var(--border-color), transparent);
-	box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-	color: inherit;
+	/* Mobile/Base Styles */
 	inset: 0;
-	height: 100%;
 	width: 100%;
+	height: 100dvh;
+	max-inline-size: 100%;
+	max-height: 100dvh;
+	margin: 0;
+	border: none;
+	border-radius: 0;
+	overflow-y: auto;
+	box-shadow: none;
 
 	@media (min-width: 45rem) {
-		max-inline-size: 40rem;
-		height: auto;
-		width: auto;
 		inset: auto;
-		padding-block: 3rem;
+		width: auto;
+		height: auto;
+		max-inline-size: 40rem;
+		max-height: 80vh;
+		margin: 3rem auto;
+		border: 1px solid light-dark(var(--border-color), transparent);
+		border-radius: 8px;
+		box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
 	}
 
 	.shortcode-close {
