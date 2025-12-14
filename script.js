@@ -230,14 +230,14 @@ document.addEventListener("DOMContentLoaded", function () {
 		const savedEngine = localStorage.getItem("selectedEngine");
 		if (savedEngine) {
 			// Check if saved engine still exists in current options
-			 const optionExists = [...engineSelect.options].some(o => o.value === savedEngine);
-			 if (optionExists) {
-				 engineSelect.value = savedEngine;
-			 } else {
-				 // If not, fallback to default (which is Kagi)
-				 engineSelect.value = "https://kagi.com/search?q=";
-				 saveSelectedEngine(); // Update storage
-			 }
+			const optionExists = [...engineSelect.options].some(o => o.value === savedEngine);
+			if (optionExists) {
+				engineSelect.value = savedEngine;
+			} else {
+				// If not, fallback to default (which is Kagi)
+				engineSelect.value = "https://kagi.com/search?q=";
+				saveSelectedEngine(); // Update storage
+			}
 		}
 	}
 
@@ -274,6 +274,14 @@ document.addEventListener("DOMContentLoaded", function () {
 			} else if (e.key === "Escape" && document.activeElement === searchInput) {
 				searchInput.value = "";
 			}
+		});
+
+
+		// Prevent popover dismissal on interaction
+		["mousedown", "touchstart", "pointerdown", "click"].forEach((eventType) => {
+			themeToggleBtn.addEventListener(eventType, (e) => {
+				e.stopPropagation();
+			});
 		});
 
 		themeToggleBtn.addEventListener("click", () => {
