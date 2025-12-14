@@ -21,7 +21,6 @@
 
 	<link rel="icon" type="image/svg+xml" href="https://melashri.net/search/favicon.svg">
 
-	<meta property="og:image" content="og_image.png">
 	<meta property="og:image:alt" content="A magnifying glass next to the text ME Search.">
 
 	<link rel="canonical" href="https://melashri.net/search">
@@ -123,6 +122,29 @@
 				<br>
 				<p>It also features "Snap" patterns (using @) to restrict your default search to specific sites. The
 					interface is designed to be fast, privacy-friendly, and customizable with dark/light modes.</p>
+				<br>
+				<h3>Bang Patterns (!)</h3>
+				<p>Prefix a shortcut with <code>!</code> to go <em>directly</em> to that site's search results.</p>
+				<ul>
+					<li><a href="?q=!gh%20%22react%20hooks%22" class="example-link"
+							target="_blank"><code>!gh "react hooks"</code></a> → Goes to GitHub search</li>
+					<li><a href="?q=!r%20%22mechanical%20keyboards%22" class="example-link"
+							target="_blank"><code>!r "mechanical keyboards"</code></a> → Goes to Reddit search</li>
+					<li><a href="?q=!yt%20%22tutorials%22" class="example-link"
+							target="_blank"><code>!yt "tutorials"</code></a> → Goes to YouTube search</li>
+				</ul>
+				<br>
+				<h3>Snap Patterns (@)</h3>
+				<p>Prefix a shortcut with <code>@</code> to search <em>only</em> that site using your current default
+					engine.</p>
+				<ul>
+					<li><a href="?q=@gh%20%22react%20hooks%22" class="example-link"
+							target="_blank"><code>@gh "react hooks"</code></a> → Searches GitHub for "react hooks"</li>
+					<li><a href="?q=@r%20%22mechanical%20keyboards%22" class="example-link"
+							target="_blank"><code>@r "mechanical keyboards"</code></a> → Searches Reddit</li>
+					<li><a href="?q=@yt%20%22tutorials%22" class="example-link"
+							target="_blank"><code>@yt "tutorials"</code></a> → Searches YouTube</li>
+				</ul>
 				<br>
 				<h3>Set as Default Search Engine</h3>
 				<p><strong>Chrome/Edge/Brave:</strong> Go to Settings > Search engine > Manage search engines > Site
